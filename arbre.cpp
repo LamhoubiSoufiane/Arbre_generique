@@ -51,5 +51,29 @@ Noeud<T> *Noeud<T>::Inserer(Noeud<T> *arbre, T elm,int niv)
     return arbre;
 }
 
+template <class T>
+void Noeud<T>::BFS(Noeud<T> *arbre)
+{
+    if (!arbre) return;
+    list<Noeud*> Queue;
+    Queue.push_back(arbre);
+    while (!Queue.empty()) 
+    {
+        Noeud* Crt = Queue.front();
+        Queue.pop_front();
+        cout << Crt->info << " ";
+        if (Crt->fils_g) Queue.push_back(Crt->fils_g);
+        if (Crt->fils_d) Queue.push_back(Crt->fils_d);
+    }
+}
+template <class T>
+void Noeud<T>::DFS(Noeud<T> *arbre)
+{
+    if (!arbre) return;
+        DFS(arbre->fils_g);
+        cout << arbre->info<< " ";
+        dfs(arbre->fils_d);
+}
+
 
 
